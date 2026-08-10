@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nail Polish Picker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>nail polish picker</h1>
+        <p id="palette-count">5 colors</p>
+      </div>
+
+      <div class="global-controls">
+        <button class="control-button" id="add-color" type="button" title="Add a color">＋</button>
+        <button class="control-button generate-button" id="generate" type="button" title="Regenerate all unlocked colors">↻ <span>generate</span></button>
+      </div>
+    </header>
+
+    <section id="palette" class="palette" aria-label="Nail polish palette"></section>
+
+    <div id="filter-popover" class="filter-popover" hidden>
+      <div class="popover-header">
+        <strong>choose colors</strong>
+        <button id="close-filters" class="icon-button" type="button" aria-label="Close">×</button>
+      </div>
+      <p class="popover-help">choose one or more. no selection = any color.</p>
+      <div id="tag-list" class="tag-list"></div>
+      <button id="done-filters" class="done-button" type="button">done</button>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

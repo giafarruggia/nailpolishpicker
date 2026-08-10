@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Cherry Bomb",
+    "hex": "#8F1D2C",
+    "color": "red"
+  },
+  {
+    "name": "Pumpkin Spice",
+    "hex": "#C75B25",
+    "color": "orange"
+  },
+  {
+    "name": "Buttercup",
+    "hex": "#E5C84A",
+    "color": "yellow"
+  },
+  {
+    "name": "Moss",
+    "hex": "#66734A",
+    "color": "green"
+  },
+  {
+    "name": "Blue Velvet",
+    "hex": "#273B73",
+    "color": "blue"
+  },
+  {
+    "name": "Plum Smoke",
+    "hex": "#65415F",
+    "color": "purple"
+  },
+  {
+    "name": "Fairy Dust",
+    "hex": "#D8B9D4",
+    "color": "pink"
+  },
+  {
+    "name": "Cocoa",
+    "hex": "#76513E",
+    "color": "brown"
+  },
+  {
+    "name": "Linen",
+    "hex": "#D9D0C3",
+    "color": "neutral"
+  },
+  {
+    "name": "Black Cherry",
+    "hex": "#3B1825",
+    "color": "red"
+  }
+]
