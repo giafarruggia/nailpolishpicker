@@ -170,7 +170,6 @@ button {
   overflow: hidden;
 }
 
-```css
 @media (max-width: 700px) {
 
   .topbar {
@@ -209,36 +208,61 @@ button {
     width: 100%;
     height: 100%;
 
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
 
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .palette::-webkit-scrollbar {
-    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .color-block {
-    flex: 0 0 100%;
+    flex: 1 1 0;
+
     width: 100%;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 0;
 
-    padding: 24px;
+    padding: 18px 20px;
 
-    scroll-snap-align: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+  }
+
+  .block-content {
+    text-align: left;
+    min-width: 0;
   }
 
   .polish-name {
-    font-size: clamp(26px, 9vw, 42px);
+    font-size: clamp(18px, 5vw, 28px);
+  }
+
+  .polish-color {
+    margin-top: 4px;
+  }
+
+  .block-actions {
+    flex-shrink: 0;
+
+    margin-top: 0;
+    margin-left: 16px;
+
+    justify-content: flex-end;
+  }
+
+  .filter-badge {
+    top: 10px;
+    left: 20px;
+    transform: none;
+
+    max-width: calc(100% - 40px);
   }
 
   .filter-popover {
     bottom: 14px;
   }
 }
-```
