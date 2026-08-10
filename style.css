@@ -1,81 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nail Polish Picker</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+* {
+  box-sizing: border-box;
+}
 
-<body>
+:root {
+  --ink: #171717;
+  --paper: #f5f3ef;
+  --white: #ffffff;
+  --border: rgba(23, 23, 23, 0.18);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+}
 
-  <header class="topbar">
-    <div class="brand">
-      <h1>nail polish picker</h1>
-      <p id="palette-count">5 colors</p>
-    </div>
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
 
-    <div class="global-controls">
-      <button
-        class="control-button"
-        id="add-color"
-        type="button"
-        title="Add a color"
-        aria-label="Add a color"
-      >＋</button>
+body {
+  overflow: hidden;
+}
 
-      <button
-        class="control-button generate-button"
-        id="generate"
-        type="button"
-        title="Regenerate all unlocked colors"
-      >↻ <span>generate</span></button>
-    </div>
-  </header>
+button {
+  font: inherit;
+}
 
-  <main id="app">
 
-    <section
-      id="palette"
-      class="palette"
-      aria-label="Nail polish palette"
-    ></section>
+/* =========================
+   TOP NAV
+   ========================= */
 
-    <div id="filter-popover" class="filter-popover" hidden>
-      <div class="popover-header">
-        <strong>choose colors</strong>
+.topbar {
+  position: relative;
+  z-index: 20;
 
-        <button
-          id="close-filters"
-          class="icon-button"
-          type="button"
-          aria-label="Close"
-        >×</button>
-      </div>
+  width: 100%;
+  height: 72px;
 
-      <p class="popover-help">
-        choose one or more. no selection = any color.
-      </p>
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 
-      <div id="tag-list" class="tag-list"></div>
+  padding: 12px 20px;
 
-      <button
-        id="done-filters"
-        class="done-button"
-        type="button"
-      >done</button>
-    </div>
+  background: #fff;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.1);
 
-    <div
-      id="toast"
-      class="toast"
-      role="status"
-      aria-live="polite"
-    ></div>
+  flex-shrink: 0;
+}
 
-  </main>
+.brand {
+  min-width: 0;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.brand h1 {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+
+  white-space: nowrap;
+}
+
+.brand p {
+  margin: 5px 0 0;
+
+  font-size: 11px;
+  opacity: 0.6;
+
+  white-space: nowrap;
+}
+
+.global-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.control-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  min-width: 44px;
+  height: 44px;
+  padding: 0 15px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: #f1f1f1;
+  color: var(--ink);
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    transform 140ms ease,
+    background 140ms ease;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  background: #e8e8e8;
+}
+
+.generate-button {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   APP / PALETTE
+   ========================= */
+
+#app {
+  width: 100%;
+  height: calc(100vh - 72px);
+
+  position: relative;
+}
+
+.palette {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   COLOR BLOCKS
+   ========================= */
+
+.color-block {
+  position: relative;
+
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 28px;
+
+  transition:
+    flex 220ms ease,
+    filter 160ms ease;
+
+  overflow: hidden;
+}
+
+```css
+@media (max-width: 700px) {
+
+  .topbar {
+    height: 64px;
+    padding: 10px 12px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand h1 {
+    font-size: 13px;
+  }
+
+  .brand p {
+    font-size: 10px;
+  }
+
+  .generate-button span {
+    display: none;
+  }
+
+  .control-button {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+
+  #app {
+    height: calc(100vh - 64px);
+  }
+
+  .palette {
+    width: 100%;
+    height: 100%;
+
+    flex-direction: row;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .palette::-webkit-scrollbar {
+    display: none;
+  }
+
+  .color-block {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+
+    padding: 24px;
+
+    scroll-snap-align: start;
+  }
+
+  .polish-name {
+    font-size: clamp(26px, 9vw, 42px);
+  }
+
+  .filter-popover {
+    bottom: 14px;
+  }
+}
 ```
