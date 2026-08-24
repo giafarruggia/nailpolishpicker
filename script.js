@@ -254,14 +254,6 @@ addColorButton.addEventListener("click", () => {
   newSlot.polish = pickPolish([], usedNames);
   render();
 
-  if (window.innerWidth <= 700) {
-    setTimeout(() => {
-      paletteEl.scrollTo({
-        left: paletteEl.scrollWidth,
-        behavior: "smooth"
-      });
-    }, 50);
-  }
 });
 
 generateButton.addEventListener("click", generateAll);
