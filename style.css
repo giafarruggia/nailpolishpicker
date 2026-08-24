@@ -35,35 +35,29 @@ button {
   position: fixed;
   z-index: 100;
 
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 72px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: auto;
-  height: auto;
+  padding: 10px 20px;
 
-  padding: 8px;
+  background: #ffffff;
+  border-top: 1px solid rgba(23, 23, 23, 0.1);
 
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(23, 23, 23, 0.1);
-  border-radius: 999px;
-
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.14);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .global-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .control-button {
@@ -118,7 +112,7 @@ button {
 
 #app {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 72px);
 
   position: relative;
 }
@@ -374,7 +368,7 @@ button {
   z-index: 300;
 
   left: 50%;
-  bottom: 24px;
+  bottom: 88px;
 
   transform: translate(-50%, 20px);
 
@@ -412,7 +406,8 @@ button {
   }
 
   #app {
-    height: 100%;
+    width: 100%;
+    height: calc(100vh - 64px);
   }
 
   .palette {
@@ -422,73 +417,89 @@ button {
     display: flex;
     flex-direction: column;
 
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    padding-bottom: 88px;
+    overflow: hidden;
   }
 
   .color-block {
-    flex: 0 0 auto;
+    flex: 1 1 0;
 
     width: 100%;
     min-width: 0;
-    min-height: 145px;
-    height: 18vh;
+    min-height: 0;
+    height: auto;
 
-    max-height: 220px;
+    padding: 18px 20px;
 
-    padding: 24px 20px;
-
+    display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
+
+    overflow: hidden;
   }
 
   .block-content {
-    max-width: calc(100% - 145px);
+    min-width: 0;
+    max-width: calc(100% - 150px);
   }
 
   .polish-name {
-    font-size: clamp(20px, 6vw, 30px);
+    font-size: clamp(18px, 5vw, 28px);
     line-height: 1.05;
   }
 
   .polish-color {
-    margin-top: 6px;
+    margin-top: 5px;
     font-size: 10px;
   }
 
   .block-actions {
-    top: auto;
+    position: absolute;
+
     right: 18px;
-    bottom: 20px;
+    bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     opacity: 1;
     transform: none;
-
-    gap: 6px;
   }
 
   .block-button {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+
+    font-size: 16px;
 
     background: rgba(255, 255, 255, 0.86);
   }
 
+  /* solid white footer */
   .topbar {
-    left: 50%;
-    bottom: 14px;
+    position: fixed;
 
-    padding: 7px;
+    left: 0;
+    bottom: 0;
 
-    width: auto;
-    max-width: calc(100vw - 28px);
+    width: 100%;
+    height: 64px;
+
+    padding: 8px 12px;
+
+    border-radius: 0;
+
+    background: #ffffff;
+
+    border-top: 1px solid rgba(23, 23, 23, 0.1);
+
+    box-shadow:
+      0 -4px 18px rgba(0, 0, 0, 0.06);
   }
 
   .global-controls {
-    gap: 5px;
+    gap: 6px;
   }
 
   .control-button {
@@ -497,14 +508,14 @@ button {
   }
 
   .generate-button {
+    width: auto;
     min-width: 42px;
-    width: 42px;
 
-    padding: 0;
+    padding: 0 15px;
   }
 
   .generate-button span {
-    display: none;
+    display: inline;
   }
 
   .filter-popover {
@@ -512,50 +523,10 @@ button {
   }
 
   .toast {
-    bottom: 76px;
+    bottom: 78px;
 
     max-width: calc(100vw - 32px);
 
     white-space: nowrap;
-  }
-}
-
-
-/* =========================
-   VERY SMALL PHONES
-   ========================= */
-
-@media (max-width: 380px) {
-
-  .color-block {
-    min-height: 125px;
-    height: 17vh;
-
-    padding: 18px 16px;
-  }
-
-  .block-content {
-    max-width: calc(100% - 125px);
-  }
-
-  .block-actions {
-    right: 14px;
-    bottom: 16px;
-  }
-
-  .block-button {
-    width: 36px;
-    height: 36px;
-
-    font-size: 16px;
-  }
-
-  .topbar {
-    bottom: 10px;
-  }
-
-  .control-button {
-    width: 38px;
-    height: 38px;
   }
 }
