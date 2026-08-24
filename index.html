@@ -9,46 +9,41 @@
 
 <body>
 
-  <header class="topbar">
-    <div class="brand">
-      <h1>nail polish picker</h1>
-      <p id="palette-count">5 colors</p>
-    </div>
+<header class="topbar">
+  <div class="global-controls">
 
-<div class="global-controls">
+    <button
+      class="control-button"
+      id="remove-color"
+      type="button"
+      title="Remove color"
+      aria-label="Remove color"
+    >
+      −
+    </button>
 
-  <button
-    class="control-button"
-    id="remove-color"
-    type="button"
-    title="Remove"
-    aria-label="Remove"
-  >
-    −
-  </button>
+    <button
+      class="control-button"
+      id="add-color"
+      type="button"
+      title="Add color"
+      aria-label="Add color"
+    >
+      +
+    </button>
 
-  <button
-    class="control-button"
-    id="add-color"
-    type="button"
-    title="Add"
-    aria-label="Add"
-  >
-    ＋
-  </button>
+    <button
+      class="control-button generate-button"
+      id="generate"
+      type="button"
+      title="Regenerate all unlocked colors"
+      aria-label="Regenerate all unlocked colors"
+    >
+      ↻ <span>generate</span>
+    </button>
 
-  <button
-    class="control-button generate-button"
-    id="generate"
-    type="button"
-    title="Regenerate all unlocked colors"
-  >
-    ↻ <span>generate</span>
-  </button>
-
-</div>
-
-  </header>
+  </div>
+</header>
 
   <main id="app">
 
