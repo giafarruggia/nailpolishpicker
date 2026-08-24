@@ -1,4 +1,3 @@
-const paletteEl = document.querySelector("#palette");
 const addColorButton = document.querySelector("#add-color");
 const generateButton = document.querySelector("#generate");
 const paletteCountEl = document.querySelector("#palette-count");
@@ -132,19 +131,19 @@ function render() {
       block.style.color = "#111";
     }
 
-    const filterLabel = slot.filters.length
-      ? slot.filters.join(" + ")
-      : "any color";
-
     block.innerHTML = `
-      <div class="filter-badge">${escapeHtml(filterLabel)}</div>
-
       <div class="block-content">
-        <h2 class="polish-name">${slot.polish ? escapeHtml(slot.polish.name) : "no polish"}</h2>
-        <p class="polish-color">${slot.polish ? escapeHtml(slot.polish.hex.toUpperCase()) : ""}</p>
+        <h2 class="polish-name">
+          ${slot.polish ? escapeHtml(slot.polish.name) : "no polish"}
+        </h2>
+
+        <p class="polish-color">
+          ${slot.polish ? escapeHtml(slot.polish.hex.toUpperCase()) : ""}
+        </p>
       </div>
 
       <div class="block-actions">
+
         <button
           class="block-button"
           data-action="regenerate"
@@ -158,14 +157,7 @@ function render() {
           data-action="lock"
           title="${slot.locked ? "Unlock this color" : "Lock this color"}"
           aria-label="${slot.locked ? "Unlock this color" : "Lock this color"}"
-        ><span class="lock-icon">${slot.locked ? "🔒" : "🔓"}</span></button>
-
-        <button
-          class="block-button"
-          data-action="filter"
-          title="Change color filter"
-          aria-label="Change color filter"
-        >☷</button>
+        >${slot.locked ? "🔒" : "🔓"}</button>
 
         <button
           class="block-button"
@@ -173,6 +165,7 @@ function render() {
           title="Remove this color"
           aria-label="Remove this color"
         >×</button>
+
       </div>
     `;
 
@@ -191,10 +184,6 @@ function render() {
         render();
       }
 
-      if (action === "filter") {
-        openFilters(index);
-      }
-
       if (action === "remove") {
         if (palette.length <= MIN_BLOCKS) {
           showToast("you need at least one color");
@@ -208,10 +197,7 @@ function render() {
 
     paletteEl.appendChild(block);
   });
-
-  paletteCountEl.textContent = `${palette.length} ${palette.length === 1 ? "color" : "colors"}`;
 }
-
 function openFilters(index) {
   editingSlot = index;
   const slot = palette[index];
